@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  background-color: black;
+  color: lime;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.terminal {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.terminal-text {
+  white-space: pre;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: lime;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.access-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: red;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid red;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Pop-up do Windows */
+/* Pop-up do Windows com melhorias */
+/* Estilização do pop-up de acesso */
+.access-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: lime;
+  padding: 20px;
+  font-size: 18px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  border: 2px solid lime;
+  width: 350px;
+  border-radius: 5px;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+/* Cabeçalho do pop-up */
+.access-popup-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* Corpo da mensagem */
+.access-popup-body {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Botão */
+.access-popup-button {
+  background: black;
+  color: lime;
+  border: 2px solid lime;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.access-popup-button:hover {
+  background: lime;
+  color: black;
+  box-shadow: 0 0 10px lime;
+}
+
+/* Animação de entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
