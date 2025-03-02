@@ -8,9 +8,35 @@ const Taskbar = ({ time, apps = [] }) => {
     const newsIndexRef = useRef(0);
     const menuRef = useRef(null);
     const startButtonRef = useRef(null);
+    const searchInputRef = useRef(null); // Ref para o campo de pesquisa
+    const suggestionsRef = useRef(null); // Ref para a caixa de sugestões
+    const [searchText, setSearchText] = useState('');
+
+    const suggestions = [
+        "Projects",
+        "Notes",
+        "About Me",
+        "Contacts",
+        "Musics",
+        "Profile",
+        "My PC"
+    ];
+
+    const filteredSuggestions = suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(searchText.toLowerCase())
+    );
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            // Fecha a caixa de sugestões se o clique for fora dela
+            if (
+                suggestionsRef.current &&
+                !suggestionsRef.current.contains(event.target) &&
+                searchInputRef.current &&
+                !searchInputRef.current.contains(event.target)
+            ) {
+                setSearchText(''); // Limpa o texto e fecha as sugestões
+            }
             if (
                 menuRef.current &&
                 !menuRef.current.contains(event.target) &&
@@ -21,16 +47,14 @@ const Taskbar = ({ time, apps = [] }) => {
             }
         };
 
-        if (menuOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
+        // Adiciona o evento de clique apenas quando o campo de busca está em foco
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [menuOpen]);
+    }, [searchText, menuOpen]); // Depende de searchText e menuOpen
 
-    // Busca notícias uma vez quando o componente monta
     useEffect(() => {
         const fetchNews = async () => {
             try {
@@ -50,7 +74,6 @@ const Taskbar = ({ time, apps = [] }) => {
         fetchNews();
     }, []);
 
-    // Alterna as notícias a cada 10 segundos
     useEffect(() => {
         if (news.length === 0) return;
 
@@ -63,7 +86,7 @@ const Taskbar = ({ time, apps = [] }) => {
                 newsIndexRef.current = nextIndex;
                 return news.slice(nextIndex, nextIndex + 4);
             });
-        }, 7000); // 
+        }, 7000); //
 
         return () => clearInterval(interval);
     }, [news]); // Dependendo de `news`, para atualizar corretamente
@@ -73,10 +96,25 @@ const Taskbar = ({ time, apps = [] }) => {
             <div className="taskbar">
                 <div ref={startButtonRef} className="start-button" onClick={() => setMenuOpen(!menuOpen)}></div>
                 <div className="taskbar-search">
-                    <input type="text" readOnly />
+                    <input
+                        ref={searchInputRef}
+                        type="text"
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)} // Atualiza o estado ao digitar
+                    />
                 </div>
                 <div className="taskbar-time">{time.toLocaleTimeString()}</div>
             </div>
+
+            {searchText && filteredSuggestions.length > 0 && (
+                <div ref={suggestionsRef} className="search-suggestions">
+                    {filteredSuggestions.map((suggestion, index) => (
+                        <div key={index} className="suggestion-item">
+                            {suggestion}
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {menuOpen && (
                 <div ref={menuRef} className="menu-popup">

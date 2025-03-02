@@ -85,8 +85,9 @@ const OS = () => {
                 <AppIcon name="Projects" image="/images/folder.png" onDoubleClick={() => openApp("Projects")} />
                 <AppIcon name="Notes" image="/images/notepad.png" onDoubleClick={() => openApp("Notes")} />
                 <AppIcon name="About Me" image="/images/folder.png" onDoubleClick={() => openApp("AboutMe")} />
-                <AppIcon name="My PC" image="/images/folder.png" onDoubleClick={() => openApp("MyPC")} />
+                <AppIcon name="Contacts" image="/images/folder.png" onDoubleClick={() => openApp("Contacts")} />
                 <AppIcon name="Musics" image="/images/musics.png" onDoubleClick={() => openApp("Musics")} />
+                <AppIcon name="My PC" image="/images/mypc.png" onDoubleClick={() => openApp("My PC")} />
                 {selectionBox && (
                     <div className="selection-box" style={{
                         left: selectionBox.x,
@@ -104,7 +105,7 @@ const OS = () => {
             {openWindows.includes("Notes") && <Window title="Notes" onClose={() => closeApp("Notes")}><textarea placeholder="Type something..."></textarea></Window>}
             {openWindows.includes("Terminal") && <Window title="Terminal" onClose={() => closeApp("Terminal")}><div>Fake terminal running...</div></Window>}
 
-            <Taskbar time={time} toggleMenu={toggleMenu} apps={["Projects", "Notes", "About Me", "My PC", "Musics"]} startButtonRef={startButtonRef} />
+            <Taskbar time={time} apps={["Projects", "Notes", "About Me", "Contacts", "Musics"]} />
 
             {showMenu && (
                 <div ref={menuRef} className="start-menu">

@@ -1,7 +1,9 @@
 .taskbar {
     width: 70%;
     height: 50px;
-    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgb(39, 58, 98) 0%, rgb(56, 78, 121) 100%);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,8 +13,6 @@
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(15px);
-    border-radius: 16px;
 }
 
 /* Botão Start */
@@ -35,23 +35,120 @@
 
 /* Barra de Pesquisa */
 .taskbar-search input {
-    width: 220px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 200px;
     height: 38px;
     border-radius: 20px;
     border: none;
     outline: none;
     background: rgba(255, 255, 255, 0.15);
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     text-align: center;
+    line-height: 38px; /* Centraliza o texto verticalmente */
     transition: background 0.3s, width 0.3s;
+    position: relative;
 }
 
 .taskbar-search input:focus {
     background: rgba(255, 255, 255, 0.3);
-    width: 270px;
+    width: 250px;
 }
 
+/* Campo de busca dentro da suggestion bar */
+.search-input {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Quando o campo de busca está em foco */
+.search-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* Campo de busca dentro da suggestion bar */
+.search-input {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Quando o campo de busca está em foco */
+.search-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* Seção de categorias (Recentes, Favoritos, etc.) */
+
+/* Botões de ações rápidas, por exemplo, configurações */
+.action-button {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Ao passar o mouse nos botões de ação */
+.action-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.search-input {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.action-button {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
 /* Relógio */
 .taskbar-time {
     color: white;
@@ -67,7 +164,7 @@
     max-height: 550px;
     min-height: 550px;
     padding: 25px;
-    background: linear-gradient(135deg, rgb(45, 118, 140) 0%, rgb(120, 150, 225) 100%);
+    background: linear-gradient(135deg, rgb(39, 58, 98) 0%, rgb(56, 78, 121) 100%);
     border-radius: 16px;
     color: white;
     position: fixed;
@@ -82,30 +179,6 @@
 .menu-button:hover {
     opacity: 1;
     transform: scale(1.15);
-}
-
-.taskbar-search {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.taskbar-search input {
-    width: 200px;
-    height: 35px;
-    border-radius: 18px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    transition: background 0.3s, width 0.3s;
-}
-
-.taskbar-search input:focus {
-    background: rgba(255, 255, 255, 0.25);
-    width: 250px;
 }
 
 /* Relógio */
@@ -199,6 +272,7 @@
     color: white;
     max-height: 220px;
     min-height: 220px;
+    overflow: hidden; /* Impede o conteúdo de ultrapassar os limites */
 }
 
 .news-box:hover {
@@ -207,9 +281,9 @@
 }
 
 .news-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Ocupa toda a largura da caixa */
+    height: 150px; /* Garante que a imagem tenha uma altura fixa */
+    object-fit: cover; /* A imagem preenche completamente o espaço sem distorção */
     border-radius: 8px;
 }
 
@@ -220,12 +294,105 @@
     margin-top: 8px;
     opacity: 1;
 }
+
 .menu-news h3 {
     font-size: 22px; /* Aumenta o tamanho da fonte */
     text-align: center; /* Centraliza o texto */
     font-weight: bold; /* Deixa o texto mais destacado */
     margin-bottom: 10px;
 }
+/* Estilo para cada item de sugestão */
+.suggestion-item {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Fundo levemente mais claro */
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Alteração do fundo ao passar o mouse */
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Adicionando ícones para as sugestões */
+.suggestion-item i {
+    font-size: 20px;
+    color: #999;
+    margin-right: 15px;
+}
+
+/* Barra de sugestões */
+.search-suggestions {
+    background: linear-gradient(135deg, rgb(39, 58, 98) 0%, rgb(56, 78, 121) 100%);
+    color: white;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 100px; /* Distância acima da taskbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px; /* Largura maior para suportar mais funcionalidades */
+    height: auto; /* Altura automática para o conteúdo */
+    min-height: 200px; /* Altura mínima para evitar um grande espaço vazio */
+    max-height: 600px;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Sombra intensa */
+    z-index: 10;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(8px); /* Sombra suave de fundo */
+    justify-content: flex-start; /* Para garantir que o conteúdo fique no topo */
+}
+
+/* Cabeçalho da suggestion bar */
+.suggestion-bar-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+}
+
+/* Campo de busca dentro da suggestion bar */
+.search-input {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Quando o campo de busca está em foco */
+.search-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* Seção de categorias (Recentes, Favoritos, etc.) */
+.suggestion-category {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ddd;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
 
 
 /* Animação de Fade In */
