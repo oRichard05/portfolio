@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import "../styles/OS.css";
+import "../styles/Taskbar.css";
+import "../styles/AppIcon.css";
+import "../styles/Window.css";
+import Taskbar from "../components/Taskbar";
+import AppIcon from "../components/AppIcon";
+import Window from "../components/Window";
 
 const OS = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -7,6 +13,8 @@ const OS = () => {
     const [openWindows, setOpenWindows] = useState([]);
     const [selectionBox, setSelectionBox] = useState(null);
     const desktopRef = useRef(null);
+    const menuRef = useRef(null);
+    const startButtonRef = useRef(null);
     const startPos = useRef(null);
 
     useEffect(() => {
@@ -14,9 +22,27 @@ const OS = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-    };
+    // Fecha o menu quando clicar fora dele
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                menuRef.current && !menuRef.current.contains(event.target) &&
+                startButtonRef.current && !startButtonRef.current.contains(event.target)
+            ) {
+                setShowMenu(false);
+            }
+        };
+
+        if (showMenu) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [showMenu]);
+
+    const toggleMenu = () => setShowMenu(!showMenu);
 
     const openApp = (appName) => {
         if (!openWindows.includes(appName)) {
@@ -49,98 +75,43 @@ const OS = () => {
     };
 
     return (
-        <div
-            className="custom-os"
-            style={{
-                backgroundImage: "url(/images/wallpaper.png)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat"
-            }}
-        >
-            <div
-                className="desktop"
-                ref={desktopRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-            >
-                <div className="icon" onDoubleClick={() => openApp("Projects")}>
-                    <img src="/images/folder.png" alt="Projects" className="icon-image" />
-                    <span className="icon-label">Projects</span>
-                </div>
-                <div className="icon" onDoubleClick={() => openApp("Notes")}>
-                    <img src="/images/notepad.png" alt="Notes" className="icon-image" />
-                    <span className="icon-label">Notes</span>
-                </div>
-                <div className="icon" onDoubleClick={() => openApp("AboutMe")}>
-                    <img src="/images/folder.png" alt="About Me" className="icon-image" />
-                    <span className="icon-label">AboutMe</span>
-                </div>
-                <div className="icon" onDoubleClick={() => openApp("MyPC")}>
-                    <img src="/images/folder.png" alt="My PC" className="icon-image" />
-                    <span className="icon-label">My PC</span>
-                </div>
-                <div className="icon" onDoubleClick={() => openApp("Musics")}>
-                    <img src="/images/musics.png" alt="Musics" className="icon-image" />
-                    <span className="icon-label">Musics</span>
-                </div>
+        <div className="custom-os" style={{
+            backgroundImage: "url(/images/wallpaper.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat"
+        }}>
+            <div className="desktop" ref={desktopRef} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
+                <AppIcon name="Projects" image="/images/folder.png" onDoubleClick={() => openApp("Projects")} />
+                <AppIcon name="Notes" image="/images/notepad.png" onDoubleClick={() => openApp("Notes")} />
+                <AppIcon name="About Me" image="/images/folder.png" onDoubleClick={() => openApp("AboutMe")} />
+                <AppIcon name="My PC" image="/images/folder.png" onDoubleClick={() => openApp("MyPC")} />
+                <AppIcon name="Musics" image="/images/musics.png" onDoubleClick={() => openApp("Musics")} />
                 {selectionBox && (
-                    <div
-                        className="selection-box"
-                        style={{
-                            left: selectionBox.x,
-                            top: selectionBox.y,
-                            width: selectionBox.width,
-                            height: selectionBox.height,
-                            position: "absolute",
-                            background: "rgba(0, 120, 215, 0.3)",
-                            border: "1px solid rgba(0, 120, 215, 0.8)",
-                        }}
-                    ></div>
+                    <div className="selection-box" style={{
+                        left: selectionBox.x,
+                        top: selectionBox.y,
+                        width: selectionBox.width,
+                        height: selectionBox.height,
+                        position: "absolute",
+                        background: "rgba(0, 120, 215, 0.3)",
+                        border: "1px solid rgba(0, 120, 215, 0.8)"
+                    }}></div>
                 )}
             </div>
 
-            {openWindows.includes("Explorer") && (
-                <div className="window">
-                    <div className="window-header">
-                        Files <button onClick={() => closeApp("Explorer")}>X</button>
-                    </div>
-                    <div className="window-content">File manager...</div>
-                </div>
-            )}
-            {openWindows.includes("Notes") && (
-                <div className="window">
-                    <div className="window-header">
-                        Notes <button onClick={() => closeApp("Notes")}>X</button>
-                    </div>
-                    <textarea className="window-content" placeholder="Type something..."></textarea>
-                </div>
-            )}
-            {openWindows.includes("Terminal") && (
-                <div className="window">
-                    <div className="window-header">
-                        Terminal <button onClick={() => closeApp("Terminal")}>X</button>
-                    </div>
-                    <div className="window-content">Fake terminal running...</div>
-                </div>
-            )}
+            {openWindows.includes("Explorer") && <Window title="Files" onClose={() => closeApp("Explorer")}><div>File manager...</div></Window>}
+            {openWindows.includes("Notes") && <Window title="Notes" onClose={() => closeApp("Notes")}><textarea placeholder="Type something..."></textarea></Window>}
+            {openWindows.includes("Terminal") && <Window title="Terminal" onClose={() => closeApp("Terminal")}><div>Fake terminal running...</div></Window>}
 
-            <div className="taskbar">
-                <div className="start-button" onClick={toggleMenu}>⚙️</div>
-                <div className="taskbar-search">
-                    <input type="text" placeholder="Pesquisar..." />
-                </div>
-                <div className="taskbar-time">{time.toLocaleTimeString()}</div>
-            </div>
+            <Taskbar time={time} toggleMenu={toggleMenu} apps={["Projects", "Notes", "About Me", "My PC", "Musics"]} startButtonRef={startButtonRef} />
 
             {showMenu && (
-                <div className="start-menu">
+                <div ref={menuRef} className="start-menu">
                     <div className="start-item" onClick={() => alert('Abrindo Configurações...')}>⚙️ Configurações</div>
                     <div className="start-item" onClick={() => alert('Desligando...')}>🔌 Desligar</div>
                 </div>
             )}
-            )
         </div>
     );
 };

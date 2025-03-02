@@ -1,0 +1,242 @@
+.taskbar {
+    width: 70%;
+    height: 50px;
+    background: rgba(20, 20, 20, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+}
+
+/* Botão Start */
+.start-button {
+    width: 45px;
+    height: 45px;
+    background-image: url("/public/images/menu.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out
+}
+
+.start-button:hover {
+    transform: scale(1.2);
+    background-color: transparent;
+}
+
+/* Barra de Pesquisa */
+.taskbar-search input {
+    width: 220px;
+    height: 38px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    transition: background 0.3s, width 0.3s;
+}
+
+.taskbar-search input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    width: 270px;
+}
+
+/* Relógio */
+.taskbar-time {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Popup do Menu */
+.menu-popup {
+    display: flex;
+    width: 620px;
+    max-height: 550px;
+    min-height: 550px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgb(45, 118, 140) 0%, rgb(120, 150, 225) 100%);
+    border-radius: 16px;
+    color: white;
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+}
+
+
+.menu-button:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.taskbar-search {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.taskbar-search input {
+    width: 200px;
+    height: 35px;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    transition: background 0.3s, width 0.3s;
+}
+
+.taskbar-search input:focus {
+    background: rgba(255, 255, 255, 0.25);
+    width: 250px;
+}
+
+/* Relógio */
+.taskbar-time {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Ajustando seções */
+.menu-left {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    margin-right: 20px;
+    justify-content: flex-end;
+}
+
+.news-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Ajustando botões */
+.menu-button img {
+    width: 25px;
+    height: 25px;
+}
+
+.menu-option {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Ícones de perfil e desligar */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: auto; /* Garante que os botões fiquem no final */
+}
+.menu-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.3s ease-in-out, transform 0.2s;
+}
+
+.menu-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.menu-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Notícias */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.news-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out, background 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    max-height: 220px;
+    min-height: 220px;
+}
+
+.news-box:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.news-title {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 8px;
+    opacity: 1;
+}
+.menu-news h3 {
+    font-size: 22px; /* Aumenta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    font-weight: bold; /* Deixa o texto mais destacado */
+    margin-bottom: 10px;
+}
+
+
+/* Animação de Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
