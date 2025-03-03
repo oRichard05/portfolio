@@ -8,7 +8,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to="/terminal" />} />
                 <Route path="/terminal" element={<Terminal />} />
-                <Route path="/OS" element={<OS />} />
+                <Route path="/os" element={<OS />} /> {/* Ajustei para lowercase */}
             </Routes>
         </Router>
     );
