@@ -151,8 +151,8 @@ const OS = () => {
 
             {showMenu && (
                 <div ref={menuRef} className="start-menu">
-                    <div className="start-item" onClick={() => alert('Abrindo Configurações...')}>⚙️ Configurações</div>
-                    <div className="start-item" onClick={() => alert('Desligando...')}>🔌 Desligar</div>
+                    <div className="start-item" onClick={() => alert('Abrindo Configurações...')}>⚙ Configurações</div>
+                    <div className="start-item" onClick={() => alert('Desligando...')}> Desligar</div>
                 </div>
             )}
 

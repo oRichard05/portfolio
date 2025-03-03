@@ -121,7 +121,7 @@ body {
 /* Janelas */
 .window {
     width: 600px;
-    height: 400px;
+    height: 475px;
     background: rgba(30, 30, 30, 0.9);
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -137,6 +137,7 @@ body {
     display: flex;
     justify-content: space-between;
     cursor: grab;
+    font-size: 25px;
 }
 
 .window-header button {
@@ -149,10 +150,4 @@ body {
 
 .window-header button:hover {
     color: #ff2222;
-}
-
-.window-content {
-    flex: 1;
-    padding: 10px;
-    color: white;
 }
