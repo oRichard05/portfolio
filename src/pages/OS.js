@@ -102,12 +102,14 @@ const OS = () => {
 
     const renderWindow = (appName) => {
         const WindowComponent = {
-            "Projects": Projects,
+            "Projects": Projects,  // <- Certifique-se de que "Projects" está corretamente listado
             "AboutMe": AboutMe,
             "Contacts": Contacts,
             "MyPC": MyPC,
             "Profile": Profile
         }[appName];
+
+        if (!WindowComponent) return null; // Evita erro caso appName não esteja listado
 
         return (
             <div
