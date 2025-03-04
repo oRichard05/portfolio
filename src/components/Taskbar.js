@@ -12,7 +12,7 @@ const Taskbar = ({ time, openApp }) => {
     const suggestionsRef = useRef(null);
     const [searchText, setSearchText] = useState('');
 
-    const suggestions = ["Projects", "About Me", "Contacts", "Profile", "My PC"];
+    const suggestions = ["Projects", "About Me", "Contacts", "My PC"];
 
     const filteredSuggestions = searchText
         ? suggestions.filter(s => s.toLowerCase().includes(searchText.toLowerCase()))
@@ -87,9 +87,6 @@ const Taskbar = ({ time, openApp }) => {
                 <div ref={menuRef} className="menu-popup">
                     <div className="menu-left">
                         <div className="menu-buttons">
-                            <div className="menu-button" onClick={() => openApp('Profile')}>
-                                <img src="/images/profile.png" alt="Perfil" />
-                            </div>
                             <div className="menu-button" onClick={() => alert('Desligando...')}>
                                 <img src="/images/turnoff.png" alt="Desligar" />
                             </div>

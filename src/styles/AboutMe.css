@@ -1,20 +1,31 @@
 .about-me-window {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 20px auto;
+    width: 700px;
+    height: 575px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
-
-.about-me-window h2 {
+h2 {
     font-size: 24px;
-    color: #333;
+    color: #fff;
     margin-bottom: 10px;
 }
-
-.about-me-window p {
+.about-image{
+    width: 170px;
+    height: 200px;
+}
+.about-image2{
+    width: 270px;
+    height: 250px;
+}
+.about-image3{
+    width: 270px;
+    height: 250px;
+    margin-left: 100px;
+}
+.window-content p {
     font-size: 16px;
     line-height: 1.5;
-    color: #555;
+    color: #ddd;
+    margin-bottom: 30px;
 }

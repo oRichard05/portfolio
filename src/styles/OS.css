@@ -120,8 +120,8 @@ body {
 
 /* Janelas */
 .window {
-    width: 600px;
-    height: 475px;
+    width: 700px;
+    height: 575px;
     background: rgba(30, 30, 30, 0.9);
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);

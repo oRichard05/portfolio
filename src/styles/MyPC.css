@@ -1,25 +1,17 @@
 .my-pc-window {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 20px auto;
+    width: 700px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
-
-.my-pc-window h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.my-pc-window ul {
-    list-style-type: none;
+.pc-specs {
+    list-style: none;
     padding: 0;
 }
 
-.my-pc-window li {
+.pc-specs li {
     font-size: 16px;
-    color: #555;
-    margin-bottom: 5px;
+    color: #ddd;
+    margin: 8px 0;
 }

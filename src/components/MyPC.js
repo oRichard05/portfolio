@@ -3,15 +3,20 @@ import '../styles/MyPC.css';
 
 const MyPC = () => {
     return (
-        <div className="my-pc-window">
-            <h2>Meu PC</h2>
-            <ul>
-                <li>Sistema Operacional: Windows 11</li>
-                <li>Processador: Intel i7</li>
-                <li>Memória RAM: 16GB</li>
-                <li>Armazenamento: 512GB SSD</li>
-            </ul>
-            <p>Esses são os principais detalhes do meu computador!</p>
+        <div className="window my-pc-window">
+            <div className="window-content">
+                <ul className="pc-specs">
+                    <li><strong>Device Name:</strong> Richard's Computer</li>
+                    <li><strong>Operating System:</strong> Windows 11</li>
+                    <li><strong>Processor:</strong> Intel i7</li>
+                    <li><strong>RAM:</strong> 16GB</li>
+                    <li><strong>Storage:</strong> 512GB SSD</li>
+                    <li><strong>Graphics Card:</strong> NVIDIA GTX 1660</li>
+                    <li><strong>Screen Resolution:</strong> 1920x1080</li>
+                    <li><strong>System Type:</strong> 64-bit Operating System</li>
+                    <li><strong>BIOS Version:</strong> American Megatrends 5.21</li>
+                </ul>
+            </div>
         </div>
     );
 };

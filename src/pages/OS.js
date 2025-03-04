@@ -5,7 +5,6 @@ import Taskbar from "../components/Taskbar";
 import AboutMe from "../components/AboutMe";
 import Contacts from "../components/Contacts";
 import MyPC from "../components/MyPC";
-import Profile from "../components/Profile";
 import Projects from "../components/Projects";
 import AppIcon from "../components/AppIcon";
 
@@ -106,7 +105,6 @@ const OS = () => {
             "AboutMe": AboutMe,
             "Contacts": Contacts,
             "MyPC": MyPC,
-            "Profile": Profile
         }[appName];
 
         if (!WindowComponent) return null; // Evita erro caso appName não esteja listado
