@@ -117,37 +117,3 @@ body {
 .start-item:hover {
     background: rgba(255, 255, 255, 0.1);
 }
-
-/* Janelas */
-.window {
-    width: 700px;
-    height: 575px;
-    background: rgba(30, 30, 30, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-    position: absolute;
-}
-
-.window-header {
-    background: rgba(50, 50, 50, 0.9);
-    padding: 8px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    cursor: grab;
-    font-size: 25px;
-}
-
-.window-header button {
-    background: none;
-    border: none;
-    color: #ff5555;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.window-header button:hover {
-    color: #ff2222;
-}
