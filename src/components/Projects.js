@@ -1,108 +1,99 @@
-import { useState, useEffect } from "react";
-import "../styles/Projects.css";
+import React, { useState, useEffect } from 'react';
+import '../styles/Projects.css';
+import { FaTimes } from 'react-icons/fa';
+import IndividualProject from './IndividualProject';
 
-const Projects = () => {
-    const [projectWindows, setProjectWindows] = useState({});
-    const [windowPositions, setWindowPositions] = useState({});
-    const [zIndexTracker, setZIndexTracker] = useState({});
-    const [isDragging, setIsDragging] = useState(false);
-    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-    const [currentDrag, setCurrentDrag] = useState(null);
+const Projects = ({ closeApp }) => {
+    const [position, setPosition] = useState({ x: 150, y: 150 });
+    const [dragging, setDragging] = useState(false);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [zIndex, setZIndex] = useState(1);
+    const [openWindows, setOpenWindows] = useState([]);
 
-    const projects = [
-        { id: "project1", name: "Pe-na-moda", description: "An online clothing store website.", link: "https://github.com/oRichard05/PeNaModa" },
-        { id: "project2", name: "Earte", description: "An art store website.", link: "https://github.com/oRichard05/Earte" },
-        { id: "project3", name: "Pokedex", description: "A frontend website simulating a Pokédex.", link: "https://github.com/oRichard05/Pokedex" },
-        { id: "project4", name: "Juros", description: "A frontend interest rate calculator.", link: "https://github.com/oRichard05/juros" },
-        { id: "project5", name: "Edu-Planner", description: "A school management website.", link: "https://github.com/oRichard05/EduPlanner" },
-        { id: "project6", name: "Biriguizinho", description: "Line-following Arduino robot code.", link: "https://github.com/oRichard05/Biriguizinho" }
-    ];
-
-    const bringToFront = (appName) => {
-        setZIndexTracker(prev => {
-            const maxZ = Math.max(1, ...Object.values(prev));
-            return { ...prev, [appName]: maxZ + 1 };
-        });
+    const handleMouseDown = (e) => {
+        setDragging(true);
+        setOffset({ x: e.clientX - position.x, y: e.clientY - position.y });
+        setZIndex(prevZIndex => prevZIndex + 1); // Move the dragged window to the top
     };
 
-    const handleMouseDown = (e, appName) => {
-        bringToFront(appName);
-        setIsDragging(true);
-        setCurrentDrag(appName);
+    const handleMouseMove = (e) => {
+        if (!dragging) return;
+        setPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
+    };
 
-        const rect = e.currentTarget.closest(".project-window").getBoundingClientRect();
-        setDragOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const handleMouseUp = () => {
+        setDragging(false);
+    };
 
-        e.preventDefault();
+    const handleClickOutside = (e) => {
+        if (!e.target.closest('.window')) {
+            closeApp(); // Close the window if clicked outside
+        }
     };
 
     useEffect(() => {
-        const handleMouseMove = (e) => {
-            if (!isDragging || !currentDrag) return;
-
-            setWindowPositions(prev => ({
-                ...prev,
-                [currentDrag]: {
-                    x: e.clientX - dragOffset.x,
-                    y: e.clientY - dragOffset.y,
-                }
-            }));
-        };
-
-        const handleMouseUp = () => {
-            setIsDragging(false);
-            setCurrentDrag(null);
-        };
-
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-
+        if (dragging) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        } else {
+            document.addEventListener('click', handleClickOutside);
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        }
         return () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
+            document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [isDragging, currentDrag, dragOffset]);
+    }, [dragging]);
+
+    const projects = [
+        { id: "project1", name: "Pe-na-moda", description: "Online clothing store.", tech: "React, Node.js", link: "https://github.com/oRichard05/PeNaModa" },
+        { id: "project2", name: "Earte", description: "Art store website.", tech: "Vue, Firebase", link: "https://github.com/oRichard05/Earte" },
+        { id: "project3", name: "Pokedex", description: "Pokédex simulation website.", tech: "HTML, CSS, JavaScript", link: "https://github.com/oRichard05/Pokedex" },
+        { id: "project4", name: "Juros", description: "Interest rate calculator.", tech: "React, TailwindCSS", link: "https://github.com/oRichard05/juros" },
+        { id: "project5", name: "Edu-Planner", description: "School management platform.", tech: "Django, PostgreSQL", link: "https://github.com/oRichard05/EduPlanner" },
+        { id: "project6", name: "Biriguizinho", description: "Line-following Arduino robot.", tech: "C++, Arduino", link: "https://github.com/oRichard05/Biriguizinho" }
+    ];
+
+    const openProjectWindow = (project) => {
+        const centerX = window.innerWidth / 2 - 200;
+        const centerY = window.innerHeight / 2 - 150;
+        setOpenWindows(prevWindows => [
+            ...prevWindows,
+            { ...project, position: { x: centerX, y: centerY }, zIndex: prevWindows.length + 1, dragging: false }
+        ]);
+    };
+
+    const closeProjectWindow = (id) => {
+        setOpenWindows(openWindows.filter(win => win.id !== id));
+    };
 
     return (
-        <div className="projects-container">
-            <div className="projects-window">
+        <>
+            <div className="window projects-window" style={{ top: position.y, left: position.x, zIndex: zIndex }}>
+                <div className="window-header" onMouseDown={handleMouseDown}>
+                    <span>Projects</span>
+                    <button onClick={closeApp} className="close-btn"><FaTimes /></button>
+                </div>
                 <div className="window-content">
-                    {projects.map(project => (
-                        <div
-                            key={project.id}
-                            className="text-file"
-                            onClick={() => setProjectWindows(prev => ({ ...prev, [project.id]: true }))}
-                        >
-                            {project.name}
+                    {projects.map((project) => (
+                        <div key={project.id} className="folder" onClick={() => openProjectWindow(project)}>
+                            📁 {project.name}
                         </div>
                     ))}
                 </div>
             </div>
 
-            {projects.map(project =>
-                projectWindows[project.id] ? (
-                    <div
-                        key={project.id}
-                        className="project-window"
-                        style={{
-                            top: windowPositions[project.id]?.y ?? window.innerHeight / 2 - 150,
-                            left: windowPositions[project.id]?.x ?? window.innerWidth / 2 - 200,
-                            zIndex: zIndexTracker[project.id] || 1,
-                        }}
-                        onMouseDown={(e) => handleMouseDown(e, project.id)}
-                    >
-                        <div className="window-header">
-                            {project.name}
-                            <button className="close-btn" onClick={() => setProjectWindows(prev => ({ ...prev, [project.id]: false }))}>✖</button>
-                        </div>
-                        <div className="window-content">
-                            <p>{project.description}</p>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                        </div>
-                    </div>
-                ) : null
-            )}
-        </div>
+            {openWindows.map((project) => (
+                <IndividualProject
+                    key={project.id}
+                    project={project}
+                    closeProjectWindow={closeProjectWindow}
+                    openWindows={openWindows}
+                />
+            ))}
+        </>
     );
 };
 

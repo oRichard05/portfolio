@@ -1,14 +1,13 @@
-.projects-window {
+.project-document {
     position: absolute;
     width: 400px;
-    height: 360px;
     background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
     color: white;
     border: 2px solid #777;
     border-radius: 10px;
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: z-index 0.3s ease;
+    z-index: 1000; /* Assegura que a janela do projeto fique no topo */
 }
 
 .window-header {
@@ -43,17 +42,14 @@
     gap: 12px;
 }
 
-.folder {
-    display: flex;
-    align-items: flex-start;
-    cursor: pointer;
-    background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-    padding: 8px;
-    border-radius: 6px;
-    transition: background 0.3s, transform 0.2s;
+.project-details a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-.folder:hover {
-    background: #555;
-    transform: translateY(-2px);
+.project-details a:hover {
+    color: #63b8ff;
+    text-decoration: underline;
 }

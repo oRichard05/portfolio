@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import '../styles/Contacts.css';
+import '../styles/IndividualProject.css';
 
-const Contacts = ({ closeApp }) => {
-    const [position, setPosition] = useState({ x: 200, y: 200 }); // Posição inicial da janela
+const IndividualProject = ({ project, closeProjectWindow, openWindows }) => {
+    const [position, setPosition] = useState(project.position);
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 
@@ -29,34 +29,31 @@ const Contacts = ({ closeApp }) => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         }
-
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };
     }, [dragging]);
 
+    useEffect(() => {
+        if (dragging) {
+            project.zIndex = Math.max(...openWindows.map(win => win.zIndex)) + 1;
+        }
+    }, [dragging, openWindows]); // Add openWindows as a dependency
+
     return (
-        <div
-            className="window contacts-window"
-            style={{ top: position.y, left: position.x }}
-        >
+        <div className="window project-document" style={{ top: position.y, left: position.x, zIndex: project.zIndex }}>
             <div className="window-header" onMouseDown={handleMouseDown}>
-                <span>Get in Touch</span>
-                <button onClick={closeApp} className="close-btn">
-                    <FaTimes />
-                </button>
+                <span>{project.name}</span>
+                <button onClick={() => closeProjectWindow(project.id)} className="close-btn"><FaTimes /></button>
             </div>
             <div className="window-content">
-                <ul className="contact-list">
-                    <li><strong>Email:</strong> <a href="mailto:otonirichard@icloud.com">otonirichard@icloud.com</a></li>
-                    <li><strong>Phone:</strong> <a href="tel:+19199237355">+1 (919) 923-7355</a></li>
-                    <li><strong>GitHub:</strong> <a href="https://github.com/oRichard05" target="_blank" rel="noopener noreferrer">github.com/oRichard05</a></li>
-                    <li><strong>Instagram:</strong> <a href="https://www.instagram.com/o.richard05/" target="_blank" rel="noopener noreferrer">@o.richard05</a></li>
-                </ul>
+                <p>{project.description}</p>
+                <p><strong>Tech Stack:</strong> {project.tech}</p>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
         </div>
     );
 };
 
-export default Contacts;
+export default IndividualProject;
