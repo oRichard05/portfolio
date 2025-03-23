@@ -1,6 +1,6 @@
 /* Window Styling */
 .about-me-window {
-    width: 600px;
+    width: 700px;
     height: 400px;
     display: flex;
     flex-direction: column;
