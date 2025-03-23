@@ -5,9 +5,10 @@ const Terminal = () => {
     const navigate = useNavigate();
     const [command, setCommand] = useState("");
     const [output, setOutput] = useState([]);
-    const [lastLogin, setLastLogin] = useState("");
     const [isHacking, setIsHacking] = useState(false);
     const [showAccessMessage, setShowAccessMessage] = useState(false);
+    const [isTyping, setIsTyping] = useState(true); // Bloqueia entrada enquanto digita
+    const [showPrompt, setShowPrompt] = useState(false); // Controla se o prompt deve ser exibido
     const terminalRef = useRef(null);
 
     useEffect(() => {
@@ -52,15 +53,23 @@ const Terminal = () => {
 
         const typeNextMessage = () => {
             if (index < messages.length) {
-                setOutput((prev) => [...prev, ""]); // Adiciona linha vazia para começar a digitação
+                setOutput((prev) => [...prev, ""]);
                 typeMessage(messages[index], () => {
                     index++;
                     typeNextMessage();
                 });
+            } else {
+                setTimeout(() => {
+                    setShowPrompt(true);
+                    setIsTyping(false);
+                }, 500);
             }
         };
 
+
         setOutput([]);
+        setIsTyping(true);
+        setShowPrompt(false);
         typeNextMessage();
     }, []);
 
@@ -145,13 +154,15 @@ const Terminal = () => {
     };
 
     const handleKeyPress = (e) => {
+        if (isTyping) return; // Bloqueia entrada durante a digitação
+
         if (e.key === "Enter") {
             if (command.trim() !== "") {
                 handleCommand(command);
             }
             setCommand("");
         } else if (e.key === "Backspace") {
-            setCommand((prev) => prev.slice(0, -1)); // Remove o último caractere
+            setCommand((prev) => prev.slice(0, -1));
         } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
             setCommand((prev) => prev + e.key);
         }
@@ -160,15 +171,14 @@ const Terminal = () => {
     useEffect(() => {
         window.addEventListener("keydown", handleKeyPress);
         return () => window.removeEventListener("keydown", handleKeyPress);
-    }, [command]);
+    }, [command, isTyping]);
 
     return (
         <div className="terminal" ref={terminalRef}>
-            <p className="terminal-text">{lastLogin}</p>
             {output.map((line, index) => (
                 <p key={index} className="terminal-text">{line}</p>
             ))}
-            {!isHacking && (
+            {!isHacking && showPrompt && (
                 <p className="terminal-text">
                     root@hacker:~$ <span className="command">{command}</span>
                     <span className="cursor">█</span>
@@ -185,7 +195,6 @@ const Terminal = () => {
             )}
         </div>
     );
-
 };
 
-    export default Terminal;
+export default Terminal;
