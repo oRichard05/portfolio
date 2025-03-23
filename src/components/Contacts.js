@@ -41,13 +41,13 @@ const Contacts = ({ closeApp }) => {
             className="window contacts-window"
             style={{ top: position.y, left: position.x }}
         >
-            <div className="window-header" onMouseDown={handleMouseDown}>
+            <div className="window-contacts-header" onMouseDown={handleMouseDown}>
                 <span>Get in Touch</span>
-                <button onClick={closeApp} className="close-btn">
+                <button onClick={closeApp} className="close-contacts-btn">
                     <FaTimes />
                 </button>
             </div>
-            <div className="window-content">
+            <div className="window-contacts-content">
                 <ul className="contact-list">
                     <li><strong>Email:</strong> <a href="mailto:otonirichard@icloud.com">otonirichard@icloud.com</a></li>
                     <li><strong>Phone:</strong> <a href="tel:+19199237355">+1 (919) 923-7355</a></li>

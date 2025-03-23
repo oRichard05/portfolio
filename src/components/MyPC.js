@@ -49,8 +49,8 @@ const MyPC = ({ closeApp }) => {
 
     return (
         <div className="my-pc-window" style={{ top: position.y, left: position.x, zIndex: zIndex }}>
-            <div className="window-header" onMouseDown={handleMouseDown}>
-                <span>My PC</span>
+            <div className="my-pc-window-header" onMouseDown={handleMouseDown}>
+                <span>System Information</span>
                 <button onClick={closeApp} className="close-btn"><FaTimes /></button>
             </div>
             <div className="window-mypc-content">

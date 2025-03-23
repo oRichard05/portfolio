@@ -4,49 +4,60 @@
     height: 400px;
     display: flex;
     flex-direction: column;
-    background-color: #2e2e2e;
+    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    border: 2px solid #777;
     border-radius: 8px;
+    color: white;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: absolute;
+    transition: z-index 0.3s ease;
 }
 
 /* Window Header */
-.window-header {
+.window-about-me-header {
+    background: linear-gradient(135deg, #3a3a3a, #444);
+    padding: 12px;
+    cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    cursor: move;
-    margin-bottom: 10px;
-    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
 }
 
-.window-header button {
-    background-color: transparent;
+.window-about-me-header button {
+    background: none;
     border: none;
     color: white;
-    font-size: 16px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
 /* Content Styling */
-.window-content {
+.window-about-me-content {
     padding: 20px;
     overflow-y: auto;
     color: #ddd;
     font-family: Arial, sans-serif;
     text-align: left;
 }
+.window-header button:hover {
+    color: #ff5555;
+}
+.window-about-me-header button:hover {
+    color: #ff5555;
+}
 
-/* Profile Header */
 .about-header {
     display: flex;
     gap: 20px;
 }
 
-.profile-image {
+.about-profile-image {
     width: 150px;
     height: 180px;
     border-radius: 6px;
@@ -70,7 +81,7 @@
     margin-bottom: 15px;
 }
 
-.image-group {
+.about-image-group {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;

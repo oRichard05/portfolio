@@ -1,37 +1,42 @@
 /* Contacts.css */
 .contacts-window {
-    position: absolute;
     width: 400px;
     height: 300px;
+    position: absolute;
     background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    color: white;
     border: 2px solid #777;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: z-index 0.3s ease;
 }
 
-.contacts-window-header {
-    background-color: #4CAF50; /* Cor de fundo do título */
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: move; /* Indica que o título pode ser arrastado */
+.window-contacts-header {
+    background: linear-gradient(135deg, #3a3a3a, #444);
+    padding: 12px;
+    cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px 5px 0 0; /* Cantos arredondados no topo */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
 }
 
-.close-btn {
+.window-contacts-header button {
     background: none;
     border: none;
     color: white;
-    font-size: 20px;
     cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+.window-contacts-header button:hover {
+    color: #ff5555;
 }
 
-.window-content {
+.window-contacts-content {
     padding: 20px;
     overflow-y: auto;
     font-size: 14px;
@@ -47,13 +52,10 @@
 }
 
 .contact-list a {
-    color: #4CAF50;
+    color: white;
     text-decoration: none;
 }
 
 .contact-list a:hover {
     text-decoration: underline;
-}
-.window:focus {
-    box-shadow: 0 0 10px rgba(0, 150, 0, 0.8);
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/AboutMe.css';
+import {FaTimes} from "react-icons/fa";
 
 const AboutMe = ({ closeApp }) => {
     const [position, setPosition] = useState({ x: 100, y: 100 });
@@ -53,16 +54,16 @@ const AboutMe = ({ closeApp }) => {
             onMouseMove={handleMouseMove}
         >
             <div
-                className="window-header"
+                className="window-about-me-header"
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
             >
                 <span>About Me</span>
-                <button onClick={closeApp}>X</button>
+                <button onClick={closeApp} className="close-btn"><FaTimes /></button>
             </div>
-            <div className="window-content">
+            <div className="window-about-me-content">
                 <div className="about-header">
-                    <img src="/images/Foto2.png" alt="Richard Picture" className="profile-image" />
+                    <img src="/images/Foto2.png" alt="Richard Picture" className="about-profile-image" />
                     <div className="about-text">
                         <h2>Otoni Richard</h2>
                         <p>
@@ -80,7 +81,7 @@ const AboutMe = ({ closeApp }) => {
                         and competing in the Brazilian Robotics Olympiad (OBR). Our team won regional, state,
                         and national titles in the Best Programming category.
                     </p>
-                    <div className="image-group">
+                    <div className="about-image-group">
                         <img src="/images/foto1.png" alt="Competition" className="about-image" />
                         <img src="/images/robotica.png" alt="Robotics Team" className="about-image" />
                     </div>

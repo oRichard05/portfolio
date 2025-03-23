@@ -1,53 +1,50 @@
 .my-pc-window {
-    position: absolute;
     width: 450px;
     height: 400px;
-    background: #2d2d30;
-    color: #ffffff;
-    border: 2px solid #3f3f41;
-    border-radius: 8px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    color: white;
+    border: 2px solid #777;
+    border-radius: 10px;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: z-index 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
 }
 
-.window-header {
-    background: linear-gradient(90deg, #3f3f41, #454548);
-    width: 100%;
-    padding: 8px 12px;
+.my-pc-window-header {
+    background: linear-gradient(135deg, #3a3a3a, #444);
+    padding: 12px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     font-weight: bold;
-    font-size: 14px;
-    color: #ffffff;
 }
 
-.window-header button {
+.my-pc-window-header button {
     background: none;
     border: none;
-    color: #ffffff;
+    color: white;
     cursor: pointer;
-    font-size: 16px;
-    transition: color 0.2s;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
-.window-header button:hover {
+.my-pc-window-header button:hover {
     color: #ff5f5f;
+}
+.window-mypc-content {
+    align-content: center;
 }
 .pc-icon {
     width: 80px;
     height: 80px;
-    background: url('/public/images/mypc.png') no-repeat center;
+    background: url('/public/images/mypc.png');
     background-size: contain;
     margin-bottom: 10px;
+    align-content: center;
 }
 
 .pc-title {
@@ -55,13 +52,4 @@
     font-weight: bold;
     margin-bottom: 12px;
     color: #dcdcdc;
-}
-
-.pc-specs {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #b0b0b3;
 }

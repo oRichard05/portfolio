@@ -72,11 +72,11 @@ const Projects = ({ closeApp }) => {
     return (
         <>
             <div className="window projects-window" style={{ top: position.y, left: position.x, zIndex: zIndex }}>
-                <div className="window-header" onMouseDown={handleMouseDown}>
+                <div className="window-projects-header" onMouseDown={handleMouseDown}>
                     <span>Projects</span>
                     <button onClick={closeApp} className="close-btn"><FaTimes /></button>
                 </div>
-                <div className="window-content">
+                <div className="window-projects-content">
                     {projects.map((project) => (
                         <div key={project.id} className="folder" onClick={() => openProjectWindow(project)}>
                             📁 {project.name}
