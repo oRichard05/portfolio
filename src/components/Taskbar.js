@@ -45,7 +45,8 @@ const Taskbar = ({ time, openApp }) => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=QcfmdeRP8JyJmMu40OZoiMXhCgZzXQXs');
+                const apiKey = process.env.REACT_APP_NYTIMES_API_KEY; // Usando a chave de API armazenada nas variáveis de ambiente
+                const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`);
                 const data = await response.json();
                 if (data.results?.length > 0) {
                     setNews(data.results);
