@@ -25,23 +25,15 @@ const MyPC = ({ closeApp }) => {
         setDragging(false);
     };
 
-    const handleClickOutside = (e) => {
-        if (!e.target.closest('.my-pc-window')) {
-            closeApp();
-        }
-    };
-
     useEffect(() => {
         if (dragging) {
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseup', handleMouseUp);
         } else {
-            document.addEventListener('click', handleClickOutside);
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         }
         return () => {
-            document.removeEventListener('click', handleClickOutside);
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };

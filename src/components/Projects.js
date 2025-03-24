@@ -25,23 +25,15 @@ const Projects = ({ closeApp }) => {
         setDragging(false);
     };
 
-    const handleClickOutside = (e) => {
-        if (!e.target.closest('.window')) {
-            closeApp(); // Close the window if clicked outside
-        }
-    };
-
     useEffect(() => {
         if (dragging) {
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseup', handleMouseUp);
         } else {
-            document.addEventListener('click', handleClickOutside);
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         }
         return () => {
-            document.removeEventListener('click', handleClickOutside);
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };

@@ -12,7 +12,7 @@ const Taskbar = ({ time, openApp }) => {
     const suggestionsRef = useRef(null);
     const [searchText, setSearchText] = useState('');
 
-    const suggestions = ["Projects", "About Me", "Contacts", "My PC"];
+    const suggestions = ["Projects", "AboutMe", "Contacts", "MyPC"];
 
     const filteredSuggestions = searchText
         ? suggestions.filter(s => s.toLowerCase().includes(searchText.toLowerCase()))
@@ -20,12 +20,20 @@ const Taskbar = ({ time, openApp }) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (suggestionsRef.current && !suggestionsRef.current.contains(event.target) &&
-                searchInputRef.current && !searchInputRef.current.contains(event.target)) {
+            if (
+                suggestionsRef.current &&
+                !suggestionsRef.current.contains(event.target) &&
+                searchInputRef.current &&
+                !searchInputRef.current.contains(event.target)
+            ) {
                 setSearchText('');
             }
-            if (menuRef.current && !menuRef.current.contains(event.target) &&
-                startButtonRef.current && !startButtonRef.current.contains(event.target)) {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target) &&
+                startButtonRef.current &&
+                !startButtonRef.current.contains(event.target)
+            ) {
                 setMenuOpen(false);
             }
         };
@@ -76,7 +84,10 @@ const Taskbar = ({ time, openApp }) => {
             {searchText && filteredSuggestions.length > 0 && (
                 <div ref={suggestionsRef} className="search-suggestions">
                     {filteredSuggestions.map((s, index) => (
-                        <div key={index} className="suggestion-item" onClick={() => openApp(s)}>
+                        <div key={index} className="suggestion-item" onClick={() => {
+                            openApp(s); // Passa o nome correto
+                            setTimeout(() => setSearchText(""), 100); // Aguarda o clique antes de limpar a pesquisa
+                        }}>
                             {s}
                         </div>
                     ))}

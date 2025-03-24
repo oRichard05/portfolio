@@ -38,12 +38,11 @@ const OS = () => {
         };
     }, []);
 
-    const toggleMenu = () => setShowMenu(!showMenu);
-
     // Opens the app by tracking its name
     const openApp = (appName) => {
+        // Verifica se o app não está aberto antes de adicionar
         if (!openWindows.includes(appName)) {
-            setOpenWindows([...openWindows, appName]);
+            setOpenWindows((prev) => [...prev, appName]);
         }
     };
 
@@ -60,6 +59,7 @@ const OS = () => {
             backgroundRepeat: "no-repeat"
         }}>
             <div className="desktop" ref={desktopRef}>
+                {/* Ícones de aplicativos */}
                 <AppIcon name="Projects" image="/images/folder.png" onDoubleClick={() => openApp("Projects")} />
                 <AppIcon name="AboutMe" image="/images/folder.png" onDoubleClick={() => openApp("AboutMe")} />
                 <AppIcon name="Contacts" image="/images/folder.png" onDoubleClick={() => openApp("Contacts")} />
@@ -75,7 +75,7 @@ const OS = () => {
                 </div>
             )}
 
-            {/* Render each app component if it's open */}
+            {/* Renderiza os aplicativos abertos */}
             {openWindows.includes("Projects") && <Projects closeApp={() => closeApp("Projects")} />}
             {openWindows.includes("AboutMe") && <AboutMe closeApp={() => closeApp("AboutMe")} />}
             {openWindows.includes("Contacts") && <Contacts closeApp={() => closeApp("Contacts")} />}
