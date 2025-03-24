@@ -37,11 +37,11 @@ const Taskbar = ({ time, openApp }) => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=59b8c0cabcf8445393f25e6060f533c7');
+                const response = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=QcfmdeRP8JyJmMu40OZoiMXhCgZzXQXs');
                 const data = await response.json();
-                if (data.articles?.length > 0) {
-                    setNews(data.articles);
-                    setVisibleNews(data.articles.slice(0, 4));
+                if (data.results?.length > 0) {
+                    setNews(data.results);
+                    setVisibleNews(data.results.slice(0, 4));
                 }
             } catch (error) {
                 console.error('Erro ao buscar notícias:', error);
@@ -98,7 +98,7 @@ const Taskbar = ({ time, openApp }) => {
                             <div className="news-grid">
                                 {visibleNews.map((article, index) => (
                                     <a key={index} href={article.url} target="_blank" rel="noopener noreferrer" className="news-box">
-                                        <img src={article.urlToImage || '/images/default-news.png'} alt={article.title} className="news-image" />
+                                        <img src={article.multimedia?.[0]?.url || '/images/default-news.png'} alt={article.title} className="news-image" />
                                         <div className="news-title">{article.title}</div>
                                     </a>
                                 ))}
