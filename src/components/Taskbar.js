@@ -132,7 +132,7 @@ const Taskbar = ({ time, openApp }) => {
             )}
 
             {showShutdown && <ShutdownConfirmation onCancel={() => setShowShutdown(false)} onShutdown={handleShutdown} />}
-            {isShuttingDown && <ShutdownEffect onComplete={() => window.location.reload()} />}
+            {isShuttingDown && <ShutdownEffect onComplete={() => { window.location.reload(); }} />}
         </>
     );
 };

@@ -1,0 +1,12 @@
+/* ShutDownEffect.css */
+
+.shutdown-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    transition: background-color 0.1s ease-out;
+    pointer-events: none;  /* Garante que não interfira nas interações durante o efeito */
+}
