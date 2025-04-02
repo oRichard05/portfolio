@@ -1,26 +1,30 @@
 .my-pc-window {
     width: 450px;
-    height: 400px;
+    height: 450px;
     position: absolute;
-    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    background: #2c2f38; /* Cor de fundo mais escura e moderna */
     color: white;
-    border: 2px solid #777;
-    border-radius: 10px;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: z-index 0.3s ease;
+    overflow: hidden;
 }
 
 .my-pc-window-header {
-    background: linear-gradient(135deg, #3a3a3a, #444);
-    padding: 12px;
+    background: linear-gradient(145deg, #3c4048, #3e434a); /* Gradiente mais suave */
+    padding: 16px 20px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.my-pc-window-header:hover {
+    background: linear-gradient(145deg, #4d535b, #555c63); /* Efeito de hover no header */
 }
 
 .my-pc-window-header button {
@@ -28,28 +32,50 @@
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     transition: color 0.3s;
 }
 
 .my-pc-window-header button:hover {
-    color: #ff5f5f;
+    color: #ff5f5f; /* Efeito de hover no botão de fechar */
 }
+
 .window-mypc-content {
-    align-content: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .pc-icon {
-    width: 80px;
-    height: 80px;
-    background: url('/public/images/mypc.png');
-    background-size: contain;
-    margin-bottom: 10px;
-    align-content: center;
+    width: 100px;
+    height: 100px;
+    background: url('/public/images/mypc.png') center/contain no-repeat;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Adicionando sombra ao ícone */
 }
 
 .pc-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #dcdcdc;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #d1d1d1; /* Cor de texto mais suave */
+}
+
+.pc-specs {
+    font-size: 14px;
+    color: #b1b1b1; /* Texto de especificações mais suave */
+    line-height: 1.6;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pc-specs p {
+    margin: 5px 0;
+}
+
+.pc-specs strong {
+    color: #f1f1f1; /* Cor de destaque mais clara para os rótulos */
 }

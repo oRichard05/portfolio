@@ -49,15 +49,15 @@ const MyPC = ({ closeApp }) => {
                 <div className="pc-icon" style={{ backgroundImage: `url(${pcIcon})` }}></div>
                 <div className="pc-title">System Information</div>
                 <div className="pc-specs">
-                    <p><strong>Device Name:</strong> Richard's Computer</p>
-                    <p><strong>Operating System:</strong> Windows 11</p>
-                    <p><strong>Processor:</strong> Intel i7</p>
-                    <p><strong>RAM:</strong> 16GB</p>
-                    <p><strong>Storage:</strong> 512GB SSD</p>
-                    <p><strong>Graphics Card:</strong> NVIDIA GTX 1660</p>
-                    <p><strong>Screen Resolution:</strong> 1920x1080</p>
+                    <p><strong>Device Name:</strong> MacBook Pro 2023</p>
+                    <p><strong>Operating System:</strong> macOS 14 Sonoma</p>
+                    <p><strong>Processor:</strong> Apple M3 Pro Chip</p>
+                    <p><strong>RAM:</strong> 32GB Unified Memory</p>
+                    <p><strong>Storage:</strong> 1TB SSD</p>
+                    <p><strong>Graphics:</strong> Apple GPU (16-core)</p>
+                    <p><strong>Display:</strong> 14.2-inch Liquid Retina XDR</p>
                     <p><strong>System Type:</strong> 64-bit Operating System</p>
-                    <p><strong>BIOS Version:</strong> American Megatrends 5.21</p>
+                    <p><strong>BIOS Version:</strong> N/A (Apple firmware)</p>
                 </div>
             </div>
         </div>

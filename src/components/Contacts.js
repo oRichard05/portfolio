@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 import '../styles/Contacts.css';
 
 const Contacts = ({ closeApp }) => {
-    const [position, setPosition] = useState({ x: 200, y: 200 }); // Posição inicial da janela
+    const [position, setPosition] = useState({ x: 200, y: 200 });
     const [dragging, setDragging] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 

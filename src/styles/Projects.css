@@ -4,7 +4,6 @@
     position: absolute;
     background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
     color: white;
-    border: 2px solid #777;
     border-radius: 10px;
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

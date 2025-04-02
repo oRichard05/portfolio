@@ -1,27 +1,30 @@
-/* Contacts.css */
 .contacts-window {
-    width: 400px;
-    height: 300px;
+    width: 450px;
+    height: 350px;
     position: absolute;
-    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    background: #2f2f2f; /* Cor mais suave e escura */
     color: white;
-    border: 2px solid #777;
-    border-radius: 10px;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.6); /* Sombra mais suave e grande */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: z-index 0.3s ease;
+    transition: z-index 0.3s ease, transform 0.3s ease;
+}
+
+.contacts-window:hover {
+    transform: scale(1.02); /* Pequena animação ao passar o mouse */
 }
 
 .window-contacts-header {
-    background: linear-gradient(135deg, #3a3a3a, #444);
-    padding: 12px;
+    background: linear-gradient(135deg, #4e4e4e, #616161); /* Gradiente moderno */
+    padding: 16px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .window-contacts-header button {
@@ -29,17 +32,21 @@
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .window-contacts-header button:hover {
-    color: #ff5555;
+    color: #ff5555; /* Cor vibrante para hover */
+    transform: rotate(90deg); /* Animação suave de rotação */
 }
 
 .window-contacts-content {
     padding: 20px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #dcdcdc;
 }
 
 .contact-list {
@@ -48,14 +55,21 @@
 }
 
 .contact-list li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
 .contact-list a {
-    color: white;
+    color: #80aaff; /* Cor azul clara para links */
     text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .contact-list a:hover {
+    color: #ff7f7f; /* Cor vibrante para hover */
     text-decoration: underline;
+}
+
+.contact-list li strong {
+    color: #ffffff;
 }
