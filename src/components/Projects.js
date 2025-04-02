@@ -40,12 +40,48 @@ const Projects = ({ closeApp }) => {
     }, [dragging]);
 
     const projects = [
-        { id: "project1", name: "Pe-na-moda", description: "Online clothing store.", tech: "React, Node.js", link: "https://github.com/oRichard05/PeNaModa" },
-        { id: "project2", name: "Earte", description: "Art store website.", tech: "Vue, Firebase", link: "https://github.com/oRichard05/Earte" },
-        { id: "project3", name: "Pokedex", description: "Pokédex simulation website.", tech: "HTML, CSS, JavaScript", link: "https://github.com/oRichard05/Pokedex" },
-        { id: "project4", name: "Juros", description: "Interest rate calculator.", tech: "React, TailwindCSS", link: "https://github.com/oRichard05/juros" },
-        { id: "project5", name: "Edu-Planner", description: "School management platform.", tech: "Django, PostgreSQL", link: "https://github.com/oRichard05/EduPlanner" },
-        { id: "project6", name: "Biriguizinho", description: "Line-following Arduino robot.", tech: "C++, Arduino", link: "https://github.com/oRichard05/Biriguizinho" }
+        {
+            id: "project1",
+            name: "Pe-na-moda",
+            description: "Online clothing store. It functions as a fully editable virtual storefront, allowing you to add, edit, or delete products.",
+            tech: "HTML, CSS, JavaScript",
+            link: "https://github.com/oRichard05/PeNaModa.git"
+        },
+        {
+            id: "project2",
+            name: "Earte",
+            description: "Art store website. It represents a landing page for a store selling art products, focusing on branding and alignment with the target audience.",
+            tech: "HTML, CSS, JavaScript",
+            link: "https://github.com/oRichard05/Earte.git"
+        },
+        {
+            id: "project3",
+            name: "Pokedex",
+            description: "Pokédex simulation website using an external API to track Pokémon. A true demonstration of the power of APIs and frontend integration.",
+            tech: "HTML, CSS, JavaScript",
+            link: "https://github.com/oRichard05/Pokedex.git"
+        },
+        {
+            id: "project4",
+            name: "Juros",
+            description: "Interest rate calculator. It calculates simple and compound interest, helping users with financial planning.",
+            tech: "HTML, CSS, JavaScript",
+            link: "https://github.com/oRichard05/juros.git"
+        },
+        {
+            id: "project5",
+            name: "Edu-Planner",
+            description: "School management platform built with Flask, Python, and MySQL. It includes features like student scheduling and appointments.",
+            tech: "Python-Flask, MySQL",
+            link: "https://github.com/oRichard05/EduPlanner.git"
+        },
+        {
+            id: "project6",
+            name: "Biriguizinho",
+            description: "Line-following Arduino robot built with C++ and Arduino. A fun project focused on robotics and automation.",
+            tech: "C++, Arduino",
+            link: "https://github.com/oRichard05/Biriguizinho.git"
+        },
     ];
 
     const openProjectWindow = (project) => {

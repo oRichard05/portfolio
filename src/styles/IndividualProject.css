@@ -1,55 +1,98 @@
 .project-document {
     position: absolute;
-    width: 400px;
-    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
+    width: 480px;
+    background: #282c34;
     color: white;
-    border: 2px solid #777;
-    border-radius: 10px;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    z-index: 1000; /* Assegura que a janela do projeto fique no topo */
+    z-index: 1000;
+    overflow: hidden;
+    border: 2px solid #777;
+    transition: transform 0.2s ease-in-out;
+}
+
+.project-document:active {
+    transform: scale(0.98);
 }
 
 .window-header {
-    background: linear-gradient(135deg, #3a3a3a, #444);
-    padding: 12px;
+    background: linear-gradient(135deg, #333, #444);
+    padding: 16px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
+    color: #d1d1d1;
+    border-bottom: 2px solid #555;
+}
+
+.window-header span {
+    color: #e1e1e1;
+    font-size: 18px;
 }
 
 .window-header button {
     background: none;
     border: none;
-    color: white;
-    cursor: pointer;
+    color: #d1d1d1;
     font-size: 18px;
-    transition: color 0.3s;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .window-header button:hover {
     color: #ff5555;
 }
 
+.window-header button:focus {
+    outline: none;
+}
+
 .window-content {
-    padding: 12px;
+    padding: 16px;
+    color: #dcdcdc;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.project-description {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #e1e1e1;
+}
+
+.project-info {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-icon {
+    font-size: 20px;
+    color: #00b5ff;
+}
+
+.info-item p {
+    margin: 0;
+}
+
 .project-details a {
-    color: #1e90ff;
+    color: #00b5ff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .project-details a:hover {
-    color: #63b8ff;
+    color: #1e90ff;
     text-decoration: underline;
 }

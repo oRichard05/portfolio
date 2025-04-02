@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaGithub, FaCog } from 'react-icons/fa';
 import '../styles/IndividualProject.css';
 
 const IndividualProject = ({ project, closeProjectWindow, openWindows }) => {
@@ -39,7 +39,7 @@ const IndividualProject = ({ project, closeProjectWindow, openWindows }) => {
         if (dragging) {
             project.zIndex = Math.max(...openWindows.map(win => win.zIndex)) + 1;
         }
-    }, [dragging, openWindows]); // Add openWindows as a dependency
+    }, [dragging, openWindows]);
 
     return (
         <div className="window project-document" style={{ top: position.y, left: position.x, zIndex: project.zIndex }}>
@@ -48,9 +48,19 @@ const IndividualProject = ({ project, closeProjectWindow, openWindows }) => {
                 <button onClick={() => closeProjectWindow(project.id)} className="close-btn"><FaTimes /></button>
             </div>
             <div className="window-content">
-                <p>{project.description}</p>
-                <p><strong>Tech Stack:</strong> {project.tech}</p>
-                <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <div className="project-description">
+                    <p>{project.description}</p>
+                </div>
+                <div className="project-info">
+                    <div className="info-item">
+                        <FaCog className="info-icon" />
+                        <p><strong>Tech Stack:</strong> {project.tech}</p>
+                    </div>
+                    <div className="info-item">
+                        <FaGithub className="info-icon" />
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                    </div>
+                </div>
             </div>
         </div>
     );
