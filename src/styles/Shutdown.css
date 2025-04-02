@@ -1,0 +1,106 @@
+/* Tela de sobreposição */
+.shutdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+/* Janela modal no estilo macOS */
+.shutdown-modal {
+    background: white;
+    color: #333;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Barra de título estilo macOS */
+.shutdown-header {
+    background: #f5f5f7;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+}
+
+/* Corpo da mensagem */
+.shutdown-body {
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Texto refinado */
+.shutdown-text {
+    font-size: 15px;
+    color: #222;
+}
+
+/* Botões no estilo macOS */
+.shutdown-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+/* Botão de cancelar */
+.cancel-btn {
+    background: rgba(0, 0, 0, 0.07);
+    border: none;
+    padding: 8px 20px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.cancel-btn:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* Botão de desligamento estilo macOS */
+.shutdown-btn {
+    background: #007aff;
+    border: none;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.shutdown-btn:hover {
+    background: #005ecb;
+    transform: scale(1.05);
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}

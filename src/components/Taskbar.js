@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ShutdownConfirmation from './ShutdownConfirmation';
+import ShutdownEffect from './ShutdownEffect';
 import '../styles/Taskbar.css';
 
 const Taskbar = ({ time, openApp }) => {
@@ -11,6 +13,8 @@ const Taskbar = ({ time, openApp }) => {
     const searchInputRef = useRef(null);
     const suggestionsRef = useRef(null);
     const [searchText, setSearchText] = useState('');
+    const [showShutdown, setShowShutdown] = useState(false);
+    const [isShuttingDown, setIsShuttingDown] = useState(false);
 
     const suggestions = ["Projects", "AboutMe", "Contacts", "MyPC"];
 
@@ -45,7 +49,7 @@ const Taskbar = ({ time, openApp }) => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const apiKey = process.env.REACT_APP_NYTIMES_API_KEY; // Usando a chave de API armazenada nas variáveis de ambiente
+                const apiKey = process.env.REACT_APP_NYTIMES_API_KEY;
                 const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`);
                 const data = await response.json();
                 if (data.results?.length > 0) {
@@ -72,6 +76,11 @@ const Taskbar = ({ time, openApp }) => {
         return () => clearInterval(interval);
     }, [news]);
 
+    const handleShutdown = () => {
+        setShowShutdown(false);
+        setIsShuttingDown(true);
+    };
+
     return (
         <>
             <div className="taskbar">
@@ -86,8 +95,8 @@ const Taskbar = ({ time, openApp }) => {
                 <div ref={suggestionsRef} className="search-suggestions">
                     {filteredSuggestions.map((s, index) => (
                         <div key={index} className="suggestion-item" onClick={() => {
-                            openApp(s); // Passa o nome correto
-                            setTimeout(() => setSearchText(""), 100); // Aguarda o clique antes de limpar a pesquisa
+                            openApp(s);
+                            setTimeout(() => setSearchText(""), 100);
                         }}>
                             {s}
                         </div>
@@ -99,7 +108,7 @@ const Taskbar = ({ time, openApp }) => {
                 <div ref={menuRef} className="menu-popup">
                     <div className="menu-left">
                         <div className="menu-buttons">
-                            <div className="menu-button" onClick={() => alert('Desligando...')}>
+                            <div className="menu-button" onClick={() => setShowShutdown(true)}>
                                 <img src="/images/turnoff.png" alt="Desligar" />
                             </div>
                         </div>
@@ -121,6 +130,9 @@ const Taskbar = ({ time, openApp }) => {
                     </div>
                 </div>
             )}
+
+            {showShutdown && <ShutdownConfirmation onCancel={() => setShowShutdown(false)} onShutdown={handleShutdown} />}
+            {isShuttingDown && <ShutdownEffect onComplete={() => window.location.reload()} />}
         </>
     );
 };
