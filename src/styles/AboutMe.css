@@ -4,27 +4,31 @@
     height: 400px;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e1e1e, rgba(42, 42, 42, 0.91));
-    border-radius: 8px;
-    color: white;
-    overflow: hidden;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: absolute;
-    transition: z-index 0.3s ease;
+    background: #2f2f2f; /* Cor mais suave e escura */
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.6); /* Sombra mais suave e grande */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: z-index 0.3s ease, transform 0.3s ease;
+}
+
+.about-me-hover{
+    transform: scale(1.02);
 }
 
 /* Window Header */
 .window-about-me-header {
-    background: linear-gradient(135deg, #3a3a3a, #444);
-    padding: 12px;
+    background: linear-gradient(135deg, #4e4e4e, #616161); /* Gradiente moderno */
+    padding: 16px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .window-about-me-header button {
@@ -32,8 +36,12 @@
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.window-about-me-header button:hover {
+    color: #ff5555; /* Cor vibrante para hover */
+    transform: rotate(90deg); /* Animação suave de rotação */
 }
 
 /* Content Styling */

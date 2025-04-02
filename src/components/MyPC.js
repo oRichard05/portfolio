@@ -56,8 +56,6 @@ const MyPC = ({ closeApp }) => {
                     <p><strong>Storage:</strong> 1TB SSD</p>
                     <p><strong>Graphics:</strong> Apple GPU (16-core)</p>
                     <p><strong>Display:</strong> 14.2-inch Liquid Retina XDR</p>
-                    <p><strong>System Type:</strong> 64-bit Operating System</p>
-                    <p><strong>BIOS Version:</strong> N/A (Apple firmware)</p>
                 </div>
             </div>
         </div>

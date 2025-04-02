@@ -11,16 +11,16 @@
 }
 
 .my-pc-window-header {
-    background: linear-gradient(145deg, #3c4048, #3e434a); /* Gradiente mais suave */
-    padding: 16px 20px;
+    background: linear-gradient(135deg, #4e4e4e, #616161); /* Gradiente moderno */
+    padding: 16px;
     cursor: grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    font-weight: 600;
-    transition: background 0.3s ease;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .my-pc-window-header:hover {
@@ -33,11 +33,12 @@
     color: white;
     cursor: pointer;
     font-size: 20px;
-    transition: color 0.3s;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .my-pc-window-header button:hover {
-    color: #ff5f5f; /* Efeito de hover no botão de fechar */
+    color: #ff5555; /* Cor vibrante para hover */
+    transform: rotate(90deg); /* Animação suave de rotação */
 }
 
 .window-mypc-content {
